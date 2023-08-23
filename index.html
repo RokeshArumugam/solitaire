@@ -1,0 +1,35 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Solitaire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="CSS/gameScreen.css">
+    <script type="text/javascript" src="JS/jquery-3.1.0.min.js" defer></script>
+    <script type="text/javascript" src="JS/general.js" defer></script>
+    <script type="text/javascript" src="JS/cards.js" defer></script>
+    <script type="text/javascript" src="JS/solitaire.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="alert">
+            <div class="alert__box">
+                <div class="alert__box__header">
+                    <div class="alert__box__header__title">Alert</div>
+                    <div class="alert__box__header__close" onclick="document.getElementsByClassName('alert')[0].classList.remove('alert--show');">x</div>
+                </div>
+                <div class="alert__box__text"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="solitaireGame" class="gameContainer">
+            <div class="gameHUDArea"></div>
+            <div class="gameArea"></div>
+            <div class="gameButtonsArea"></div>
+        </div>
+    </main>
+    <footer></footer>
+</body></html>

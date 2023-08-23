@@ -1,0 +1,4 @@
+The deck is in the top left corner.
+The columns of cards in the middle are called tableaux. The last card in the tableaux is face up. The order of cards in the tableaux must go from King downwards. The colour must alternate (red, black, red, black...).
+There are 4 foundations in the top right corner. These are for the 4 suits. The order must be Ace at the bottom and then ascending up to King.
+The aim of the game is to drag the cards from the tableaux to the foundations.

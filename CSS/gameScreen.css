@@ -1,0 +1,99 @@
+.card {
+    position: absolute;
+}
+
+.gameContainer {
+    --gameContainerHeight: calc(100vh - var(--headerHeight));
+    --gameHUDAreaHeight: 1.5em;
+    --gameButtonsAreaHeight: 2.5em;
+    --gameHUDAreaTransition: 1s;
+    -webkit-touch-callout: none;
+    user-select: none;
+    height: var(--gameContainerHeight);
+}
+
+#solitaireGame {
+    width: 100%;
+    background-color: rgb(0, 140, 40);
+}
+
+#chessGame {
+    width: 100%;
+    max-width: calc(75px * 8);
+    height: 800px;
+    margin: auto;
+    background-color: rgb(255, 190, 128);
+    /*border: 5px solid black;*/
+}
+
+.gameHUDArea,
+.gameButtonsArea {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    background-color: rgba(200, 200, 200, 0.5);
+    transition-duration: var(--gameHUDAreaTransition);
+
+}
+
+.gameHUDArea {
+    font-size: 1em;
+    height: var(--gameHUDAreaHeight);
+    line-height: var(--gameHUDAreaHeight);
+    opacity: 0;
+}
+
+#solitaireGame .gameArea {
+    padding: 1.5%;
+    height: calc(var(--gameContainerHeight) - var(--gameHUDAreaHeight) - var(--gameButtonsAreaHeight));
+}
+
+#chessGame .gameArea {
+    width: 100%;
+    height: 100%;
+}
+
+div[class^="chessSquare"] {
+    position: absolute;
+}
+
+.chessSquareWhite {
+    background-color: white;
+}
+
+.chessSquareGrey {
+    background-color: rgb(180, 180, 180);
+}
+
+.gameButtonsArea {
+    height: var(--gameButtonsAreaHeight);
+}
+
+.gameButtonsArea button {
+    width: auto;
+    min-width: 30%;
+    font-size: 1.2em;
+    opacity: 0;
+    height: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    background-color: rgba(0, 100, 255, 0.6);
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+button.gameButtonsVisible {
+    opacity: 1;
+}
+
+.gameButtonsArea button:hover {
+    color: rgb(160, 255, 160);
+    background-color: rgba(0, 100, 255, 0.75);
+}
+
+.gameButtonsArea button[disabled] {
+    color: rgb(200, 200, 200);
+    background-color: rgba(150, 150, 255, 0.75);
+}
