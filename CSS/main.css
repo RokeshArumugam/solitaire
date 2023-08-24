@@ -1,0 +1,211 @@
+*,
+*::before,
+*::after {
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana;
+    box-sizing: border-box;
+}
+
+:root {
+    --alertTransition: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.alert {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    visibility: hidden;
+}
+
+.alert--show {
+    visibility: visible;
+}
+
+.alert__box {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 1em;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 1em 0px rgba(0, 0, 0, 0.5);
+    transition-duration: var(--alertTransition);
+}
+
+.alert--show .alert__box {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0px 0px 2em 0px rgba(0, 0, 0, 0.5);
+}
+
+.alert__box__header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    position: relative;
+}
+
+.alert__box__header::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 0.2em;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0.2em;
+    background-color: #bbb;
+    bottom: 0%;
+    transition-duration: var(--alertTransition);
+}
+
+.alert--show .alert__box__header::after {
+    width: 100%;
+    transition-delay: var(--alertTransition);
+}
+
+.alert__box__header__title {
+    font-size: 2em;
+    text-align: left;
+}
+
+.alert__box__header__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    align-self: top;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+.alert__box__text {
+    max-height: 60vh;
+    overflow-y: auto;
+    opacity: 0;
+    font-size: 1.25em;
+    text-align: left;
+    transition-duration: calc(2 * var(--alertTransition));
+}
+
+.alert--show .alert__box__text {
+    opacity: 1;
+    transition-delay: calc(2 * var(--alertTransition));
+}
+
+button {
+    padding: 10px 0px;
+    width: 20%;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 25px;
+    outline: none;
+    background-color: rgba(0, 0, 255, 0.6);
+    color: white;
+    transition-duration: 0.75s;
+    user-select: none;
+}
+
+button:hover {
+    color: rgb(0, 255, 0);
+    background-color: rgba(0, 0, 255, 0.75);
+}
+
+button[disabled] {
+    color: rgb(188, 188, 188);
+    background-color: rgba(109, 109, 188, 0.75);
+}
+
+/* Game screen */
+
+.card {
+    position: absolute;
+}
+
+.gameContainer {
+    --gameContainerHeight: 100svh;
+    --gameHUDAreaHeight: 1.5em;
+    --gameButtonsAreaHeight: 2.5em;
+    --gameHUDAreaTransition: 1s;
+    -webkit-touch-callout: none;
+    user-select: none;
+    height: var(--gameContainerHeight);
+}
+
+#solitaireGame {
+    width: 100%;
+    background-color: rgb(0, 140, 40);
+}
+
+.gameHUDArea,
+.gameButtonsArea {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    background-color: rgba(200, 200, 200, 0.5);
+    transition-duration: var(--gameHUDAreaTransition);
+
+}
+
+.gameHUDArea {
+    font-size: 1em;
+    height: var(--gameHUDAreaHeight);
+    line-height: var(--gameHUDAreaHeight);
+    opacity: 0;
+}
+
+#solitaireGame .gameArea {
+    padding: 1.5%;
+    height: calc(var(--gameContainerHeight) - var(--gameHUDAreaHeight) - var(--gameButtonsAreaHeight));
+}
+
+.gameButtonsArea {
+    height: var(--gameButtonsAreaHeight);
+}
+
+.gameButtonsArea button {
+    width: auto;
+    min-width: 30%;
+    font-size: 1.2em;
+    opacity: 0;
+    height: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    background-color: rgba(0, 100, 255, 0.6);
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+button.gameButtonsVisible {
+    opacity: 1;
+}
+
+.gameButtonsArea button:hover {
+    color: rgb(160, 255, 160);
+    background-color: rgba(0, 100, 255, 0.75);
+}
+
+.gameButtonsArea button[disabled] {
+    color: rgb(200, 200, 200);
+    background-color: rgba(150, 150, 255, 0.75);
+}

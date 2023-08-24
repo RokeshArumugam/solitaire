@@ -1,4 +1,4 @@
-var CARD_RANKS = {
+let CARD_RANKS = {
     Ace: 1,
     Two: 2,
     Three: 3,
@@ -13,21 +13,19 @@ var CARD_RANKS = {
     Queen: 12,
     King: 13
 };
-
-var CARD_SUITS = {
+let CARD_SUITS = {
     Spades: 1,
     Diamonds: 2,
     Clubs: 3,
     Hearts: 4
 };
-var CARD_OBJECTS = {};
-var DECK;
-var cardImageRatio = 3.5 / 2.5;
-var cardImageSize;
-var cardsDir = imagesDir;
-var cardBackImage = cardsDir + "back.png";
-var cardMaxWidth = 100;
-var cardFlipTime = 250;
+let CARD_OBJECTS = {};
+let DECK;
+let cardImageRatio = 3.5 / 2.5;
+let cardImageSize;
+let cardBackImage = "IMAGES/back.png";
+let cardMaxWidth = 100;
+let cardFlipTime = 250;
 
 class Card {
     constructor(rank, suit) {
@@ -36,7 +34,7 @@ class Card {
         this.suitColor = ((suit % 2) == 1) ? "Black" : "Red";
         this.cardID = getCardID(this.rank, this.suit);
         this.cardImage;
-        this.faceUpImage = cardsDir + this.cardID + ".png";
+        this.faceUpImage = "IMAGES/" + this.cardID + ".png";
         this.faceUp = false;
         this.lastPosX;
         this.lastPosY;
@@ -52,15 +50,11 @@ class Card {
     }
 
     turnFaceUp(completion) {
-        if (!(this.faceUp)) {
-            this.flip(completion);
-        }
+        if (!(this.faceUp)) this.flip(completion);
     }
 
     turnFaceDown(completion) {
-        if (this.faceUp) {
-            this.flip(completion);
-        }
+        if (this.faceUp) this.flip(completion);
     }
 
     flip(completion) {
@@ -70,20 +64,17 @@ class Card {
             marginLeft: this.cardImage.width() / 2,
             marginTop: -(this.cardImage.height() / 8)
         }, cardFlipTime / 2, function (currentCardID) {
-            if (!CARD_OBJECTS[currentCardID].faceUp) {
-                CARD_OBJECTS[currentCardID].cardImage.attr("src", CARD_OBJECTS[currentCardID].faceUpImage);
-            } else {
-                CARD_OBJECTS[currentCardID].cardImage.attr("src", cardBackImage);
-            }
+            CARD_OBJECTS[currentCardID].cardImage.attr(
+                "src",
+                !CARD_OBJECTS[currentCardID].faceUp ? CARD_OBJECTS[currentCardID].faceUpImage : cardBackImage
+            );
             CARD_OBJECTS[currentCardID].faceUp = !CARD_OBJECTS[currentCardID].faceUp;
             animateCard(currentCardID, {
                 width: tempWidth,
                 marginLeft: 0,
                 marginTop: 0
             }, cardFlipTime / 2, function (current2CardID) {
-                if (completion != undefined) {
-                    completion(current2CardID);
-                }
+                if (completion != undefined) completion(current2CardID);
             });
         })
     }
@@ -104,9 +95,7 @@ class Deck {
     }
 
     removeCard(cardID) {
-        this.cardIDs = this.cardIDs.filter(function (item) {
-            return item != cardID;
-        })
+        this.cardIDs = this.cardIDs.filter(item => item != cardID);
     }
 }
 
@@ -147,12 +136,8 @@ function shuffle() {
     for (var i = 0; i < 100; i++) {
         var swapFirstIndex = Math.round(Math.random() * (DECK.cardIDs.length - 1));
         var swapSecondIndex = Math.round(Math.random() * (DECK.cardIDs.length - 1));
-        if (swapFirstIndex > 51) {
-            console.log(swapFirstIndex);
-        }
-        if (swapSecondIndex > 51) {
-            console.log(swapSecondIndex);
-        }
+        if (swapFirstIndex > 51) console.log(swapFirstIndex);
+        if (swapSecondIndex > 51) console.log(swapSecondIndex);
         var tempCardID = DECK.cardIDs[swapFirstIndex];
         DECK.cardIDs[swapFirstIndex] = DECK.cardIDs[swapSecondIndex];
         DECK.cardIDs[swapSecondIndex] = tempCardID;
