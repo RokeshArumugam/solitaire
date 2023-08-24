@@ -1,5 +1,5 @@
-var loadPartsDir = "/COMPONENTS/"
-let imagesDir = "/IMAGES/";
+var loadPartsDir = "COMPONENTS/"
+let imagesDir = "IMAGES/";
 let isTouchScreenDevice = ("ontouchstart" in window) || ("onmsgesturechange" in window);
 let parseBoolean = value => value == "true";
 
