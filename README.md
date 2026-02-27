@@ -6,7 +6,7 @@
 >
 > [View Project](https://rokesharumugam.com/projects/solitaire)
 >
-> ![Status](https://img.shields.io/website?url=https%3A//rokesharumugam.com/projects/solitaire&label=Status&up_message=Online&down_message=Offline)
+> ![Status](https://status.rokesharumugam.com/api/badge/10/status)
 >
 > ![HTML](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=FFFFFF)
 > ![CSS](https://img.shields.io/badge/CSS-663399?logo=css&logoColor=FFFFFF)
